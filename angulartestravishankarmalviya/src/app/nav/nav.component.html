@@ -1,0 +1,16 @@
+<header>
+  <div class="container">
+    <a routerLink="/" class="logo">{{ authService.username }}</a>
+    <nav>
+      <ul>
+        
+        <li *ngIf="authService.userlogedin"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/dashboard">dashboard</a></li>
+        <li *ngIf="authService.userlogedin"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/employeelist">Eployee List</a></li>
+        <li *ngIf="!authService.userlogedin"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="/login">Login</a></li>
+        <li *ngIf="authService.userlogedin"><a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" (click)="logout()">Logout</a></li>
+        
+        
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,151 @@
+<h1>Employee Mamagement</h1>
+<div>
+
+    <h5 *ngIf="success">{{message}}</h5>
+    <h5 *ngIf="valiedesuccess">{{message}}</h5>
+    
+
+    <form #f = "ngForm" (ngSubmit)="createOrUpdatePolicy(f)">
+      <table>
+        <tr>
+          <td><label class="labelclass">Orgenization Name : </label></td>
+          <td>
+              <select multiple name="orgname" [(ngModel)] ="selectedPolicy.orgname" class="inputclass">
+                  <option *ngFor="let org of orgenizations" [ngValue]="org.id">
+                       {{ org.name }}
+                  </option>
+                </select> 
+          </td>
+        </tr>
+  
+        <tr>
+            <td><label class="labelclass">Date of Training : </label></td>
+            <td>
+                <input name="dateoftraining" type="date" [(ngModel)] = "selectedPolicy.dateoftraining" class="inputclass"  />
+            </td>
+        </tr>
+  
+        <tr>
+            <td><label class="labelclass">Place of Training : </label></td>
+            <td>
+                <input name="placeoftraning" type="text" [(ngModel)] = "selectedPolicy.placeoftraning" class="inputclass"  />
+            </td>
+        </tr>
+  
+        <tr>
+            <td><label class="labelclass">Purpose of Training : </label></td>
+            <td>
+                <input name="purposeoftraining" type="text" [(ngModel)] = "selectedPolicy.purposeoftraining" class="inputclass"  />
+            </td>
+        </tr>
+  
+        <tr>
+            <td><label class="labelclass">Select Employee : </label></td>
+            <td>
+                <select multiple name="employee" [(ngModel)]="selectedPolicy.employee" class="inputclass">
+                    <option *ngFor="let emp of employee" [ngValue]="emp.id">
+                         {{ emp.name }}
+                    </option>
+                  </select> 
+            </td>
+          </tr>
+  
+        <tr>
+          <td colspan="2">
+              <input type="button" [disabled]="!formonlyview" (click)="createOrUpdatePolicy(f)" value="Create or Update Employe">
+          </td>
+        </tr>
+      </table>
+      
+          
+    </form>
+<br>
+
+<!-- Search Field -->
+<div>
+    <form [formGroup]="messageForm" (ngSubmit)="doFilter()">
+    <table>
+        <tr>
+          <td> Filter : </td>
+          <td>
+              <input type="text" formControlName="name" placeholder="Common Filter">
+              <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+                <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+              </div>
+          </td>
+          <td>
+              <input type="submit" value="Search" >
+          </td>
+          <td>
+              <input type="button" (click)="resetdoFilter()" value="Clear Filters">
+          </td>
+
+          
+        </tr>
+</table>
+</form>     
+</div>
+  
+
+
+    
+    <br><br>
+  <div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}}
+        
+        
+      </td>
+    </ng-container>
+  
+    <!-- Placeoftraning Column -->
+    <ng-container matColumnDef="placeoftraning">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Place Of Training </th>
+      <td mat-cell *matCellDef="let element"> {{element.placeoftraning}} </td>
+    </ng-container>
+  
+    <!-- Dateof training Column -->
+    <ng-container matColumnDef="dateoftraining">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateoftraining}} </td>
+    </ng-container>
+  
+    <!-- Purposeof training Column -->
+    <ng-container matColumnDef="purposeoftraining">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Purpose </th>
+      <td mat-cell *matCellDef="let element"> {{element.purposeoftraining}} </td>
+    </ng-container>
+
+    <!-- Actions training Column -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef > Actions </th>
+        <td mat-cell *matCellDef="let element"> 
+
+
+            <button (click)="deletePolicy(element.id)" >Delete</button>
+            <button (click)="selectPolicy(element)">Update</button>
+            <button (click)="viewemployee(element)">View</button>
+        </td>
+        
+      </ng-container>
+
+    
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10,15, 20]" showFirstLastButtons></mat-paginator>
+</div> 
+
+<br>
+
+
+
+  
+
+  
+  
+

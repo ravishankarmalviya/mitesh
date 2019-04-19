@@ -1,0 +1,100 @@
+<h1> {{employeetitle}} </h1>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="success">Your form is valid!</h5>
+    <table>
+
+    <tr>
+        <td><label class="labelclass">Employee Code : </label></td>
+        <td>
+            <input type="text" formControlName="empcode">
+            <div *ngIf="submitted && employeeForm.controls.empcode.errors" class="error">
+              <div *ngIf="employeeForm.controls.empcode.errors.required">Your Employee Code is required</div>
+            </div>
+        </td>
+    </tr>  
+
+    <tr>
+        <td><label class="labelclass">Employee Name : </label></td>
+        <td>
+            <input type="text" formControlName="empname">
+            <div *ngIf="submitted && employeeForm.controls.empname.errors" class="error">
+              <div *ngIf="employeeForm.controls.empname.errors.required">Your Employee name is required</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label class="labelclass">Employee Department : </label></td>
+        <td>
+            <input type="text" formControlName="empdepartment">
+            <div *ngIf="submitted && employeeForm.controls.empdepartment.errors" class="error">
+              <div *ngIf="employeeForm.controls.empdepartment.errors.required">Your Employee Department is required</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label class="labelclass">Employee Designation : </label></td>
+        <td>
+            <input type="text" formControlName="empdesignation">
+            <div *ngIf="submitted && employeeForm.controls.empdesignation.errors" class="error">
+              <div *ngIf="employeeForm.controls.empdesignation.errors.required">Your Employee Designation is required</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label class="labelclass">Reporting Employee : </label></td>
+        <td>
+            <input type="text" formControlName="empreportingemployee">
+            <div *ngIf="submitted && employeeForm.controls.empreportingemployee.errors" class="error">
+              <div *ngIf="employeeForm.controls.empreportingemployee.errors.required">Your Reporting Employee is required</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label class="labelclass">Mobile Number : </label></td>
+        <td>
+            <input type="text" formControlName="empmobilenumber">
+            <div *ngIf="submitted && employeeForm.controls.empmobilenumber.errors" class="error">
+              <div *ngIf="employeeForm.controls.empmobilenumber.errors.required">Your Mobile Number is required</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label class="labelclass">Email   : </label></td>
+        <td>
+            <input type="text" formControlName="empemmail">
+            <div *ngIf="submitted && employeeForm.controls.empemmail.errors" class="error">
+              <div *ngIf="employeeForm.controls.empemmail.errors.required">Your Email is required</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td><label class="labelclass">Joining Date   : </label></td>
+        <td>
+            <input type="date" formControlName="empjoiningdate">
+            <div *ngIf="submitted && employeeForm.controls.empjoiningdate.errors" class="error">
+              <div *ngIf="employeeForm.controls.empjoiningdate.errors.required">Your Joining Date is required</div>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <input type="submit" value="{{employeetitle}}" class="cta clsinline">
+            <input type="reset" value="Reset" class="cta clsinline">
+            <input type="button" value="Back To List" (click)="backtolist()" class="cta clsinline">
+            
+        </td>
+    </tr>
+  
+    </table>
+
+    
+  
+  </form>
