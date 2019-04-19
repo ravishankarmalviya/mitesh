@@ -1,0 +1,16 @@
+ajax_example.form:
+    path: '/admin/ajax_example'
+    defaults:
+        _form: 'Drupal\ajax_example\Form\AjaxExampleForm'
+        _title: 'Ajax Example'
+    requirements:
+        _permission: 'access administration pages'
+
+
+ajax_example.ajaxform:
+    path: '/admin/ajax_form_submit'
+    defaults:
+        _form:  '\Drupal\ajax_example\Form\AjaxSubmitDemoForm'
+        _title: 'Ajax Submit Form'
+    requirements:
+        _permission: 'access content'

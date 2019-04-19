@@ -1,0 +1,6 @@
+mymodule.commands:
+  version: VERSION
+  js:
+    js/commands.js: {}
+  dependencies:
+     - core/drupal.ajax
