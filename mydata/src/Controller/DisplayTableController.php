@@ -36,8 +36,10 @@ class DisplayTableController extends ControllerBase {
    *   Return Hello string.
    */
   public function display() {
+
+  		
 	  
-	  $node = \Drupal\node\Entity\Node::load(2);
+	  // $node = \Drupal\node\Entity\Node::load(2);
 	  
 	  // Node::$in_preview  public property Whether the node is being previewed or not.
 	  
@@ -164,7 +166,7 @@ class DisplayTableController extends ControllerBase {
 			
 		
 						
-		$query = \Drupal::database()->select('mydata', 'm');
+		/*$query = \Drupal::database()->select('mydata', 'm');
 		$query->fields('m', ['id','name','mobilenumber','email','age','gender','website']);
 		if(!empty($somedata)){
 			$query->condition('name', $somedata, '=');
@@ -175,7 +177,17 @@ class DisplayTableController extends ControllerBase {
 		//For the pagination we need to extend the pagerselectextender and
 		//limit in the query
 		$pager = $table_sort->extend('Drupal\Core\Database\Query\PagerSelectExtender')->limit(3);
-		$results = $pager->execute()->fetchAll();
+		$results = $pager->execute()->fetchAll();*/
+
+		
+
+		$service = \Drupal::service('mydata.custom_services');
+		if(!empty($somedata)){
+			$results = $service->mydatarecords($somedata,$header_table);
+		}else{
+			$results = $service->mydatarecords('',$header_table);
+		}
+		
 	
 	
 	// Initialize an empty array

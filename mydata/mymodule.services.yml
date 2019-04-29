@@ -1,0 +1,4 @@
+services:
+  mydata.custom_services:
+    class: Drupal\mydata\Services\CustomService
+    arguments: []

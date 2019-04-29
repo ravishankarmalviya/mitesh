@@ -1,0 +1,11 @@
+mydata.tab_1:
+  route_name : mydata.mydata_form
+  title: Add Data
+  base_route: mydata.display_table_controller_display
+  weight: 10
+
+mydata.tab_2:
+  route_name: mydata.display_table_controller_display
+  title: Records
+  base_route: mydata.display_table_controller_display
+  weight: 20 
